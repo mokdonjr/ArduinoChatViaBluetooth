@@ -52,6 +52,16 @@ public class MyDialogFragment extends DialogFragment {
                     items[i] = devices[i].getName();
                 }
 
+                /* 선택없이 자동연결 하드코딩 */
+                for(int i=0; i<items.length; i++){
+                    if(items[i].equals("HC-06")){
+                        //dialog.dismiss();
+                        ((MainActivity)MainActivity.mContext).doConnect(devices[i]);
+                        break;
+                    }
+                }
+
+                /* 선택없이 자동연결로 위와 같이 구현
                 alertDialogBuilder.setItems(items, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -59,6 +69,7 @@ public class MyDialogFragment extends DialogFragment {
                         ((MainActivity)MainActivity.mContext).doConnect(devices[which]);
                     }
                 });
+                */
                 alertDialogBuilder.setCancelable(false);
                 break;
 
